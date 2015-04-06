@@ -20,6 +20,24 @@
 
 #pragma mark - life cycle
 
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:@(_socialNetwork) forKey:@"socialNetwork"];
+    [encoder encodeObject:_username forKey:@"username"];
+    [encoder encodeObject:_userIdentifier forKey:@"userIdentifier"];
+    [encoder encodeObject:_url forKey:@"url"];
+}
+- (instancetype)initWithCoder:(NSCoder *)decoder
+{
+    self = [super init];
+    if (self) {
+        _socialNetwork = [[decoder decodeObjectForKey:@"socialNetwork"] integerValue];
+        _username = [decoder decodeObjectForKey:@"username"];
+        _userIdentifier = [decoder decodeObjectForKey:@"userIdentifier"];
+        _url = [decoder decodeObjectForKey:@"url"];
+    }
+    return self;
+}
 - (instancetype)initWithSocialDictionary:(NSDictionary *)dictionary
 {
     

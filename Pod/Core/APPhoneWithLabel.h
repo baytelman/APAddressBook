@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface APPhoneWithLabel : NSObject
+@interface APPhoneWithLabel : NSObject<NSCoding>
 
 @property (nonatomic, readonly) NSString *phone;
 @property (nonatomic, readonly) NSString *label;
