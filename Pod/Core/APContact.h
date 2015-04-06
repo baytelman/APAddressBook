@@ -11,7 +11,7 @@
 #import <AddressBook/AddressBook.h>
 #import "APTypes.h"
 
-@interface APContact : NSObject
+@interface APContact : NSObject<NSCoding>
 
 @property (nonatomic, readonly) APContactField fieldMask;
 @property (nonatomic, readonly) NSString *firstName;

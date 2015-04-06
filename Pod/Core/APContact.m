@@ -15,6 +15,57 @@
 
 #pragma mark - life cycle
 
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:@(_fieldMask) forKey:@"fieldMask"];
+    [encoder encodeObject:_firstName forKey:@"firstName"];
+    [encoder encodeObject:_middleName forKey:@"middleName"];
+    [encoder encodeObject:_lastName forKey:@"lastName"];
+    [encoder encodeObject:_compositeName forKey:@"compositeName"];
+    
+    [encoder encodeObject:_company forKey:@"company"];
+    [encoder encodeObject:_phones forKey:@"phones"];
+    [encoder encodeObject:_phonesWithLabels forKey:@"phonesWithLabels"];
+    [encoder encodeObject:_emails forKey:@"emails"];
+    
+    [encoder encodeObject:_addresses forKey:@"addresses"];
+    [encoder encodeObject:_photo forKey:@"photo"];
+    [encoder encodeObject:_thumbnail forKey:@"thumbnail"];
+    [encoder encodeObject:_recordID forKey:@"recordID"];
+    
+    [encoder encodeObject:_creationDate forKey:@"creationDate"];
+    [encoder encodeObject:_modificationDate forKey:@"modificationDate"];
+    [encoder encodeObject:_socialProfiles forKey:@"socialProfiles"];
+    [encoder encodeObject:_note forKey:@"note"];
+}
+- (instancetype)initWithCoder:(NSCoder *)decoder
+{
+    self = [super init];
+    if (self) {
+        _fieldMask = [[decoder decodeObjectForKey:@"fieldMask"] integerValue];
+        _firstName = [decoder decodeObjectForKey:@"firstName"];
+        _middleName = [decoder decodeObjectForKey:@"middleName"];
+        _lastName = [decoder decodeObjectForKey:@"lastName"];
+        _compositeName = [decoder decodeObjectForKey:@"compositeName"];
+        
+        _company = [decoder decodeObjectForKey:@"company"];
+        _phones = [decoder decodeObjectForKey:@"phones"];
+        _phonesWithLabels = [decoder decodeObjectForKey:@"phonesWithLabels"];
+        _emails = [decoder decodeObjectForKey:@"emails"];
+        
+        _addresses = [decoder decodeObjectForKey:@"addresses"];
+        _photo = [decoder decodeObjectForKey:@"photo"];
+        _thumbnail = [decoder decodeObjectForKey:@"thumbnail"];
+        _recordID = [decoder decodeObjectForKey:@"recordID"];
+        
+        _creationDate = [decoder decodeObjectForKey:@"creationDate"];
+        _modificationDate = [decoder decodeObjectForKey:@"modificationDate"];
+        _socialProfiles = [decoder decodeObjectForKey:@"socialProfiles"];
+        _note = [decoder decodeObjectForKey:@"note"];
+    }
+    return self;
+}
+
 - (id)initWithRecordRef:(ABRecordRef)recordRef fieldMask:(APContactField)fieldMask
 {
     self = [super init];
